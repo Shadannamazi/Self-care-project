@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self-Care App</title>
+  <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Fira Mono', monospace;
+      background-color: #B9CBD9 !important;
+      color: #add8e6;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .tab {
+      margin: 0 10px;
+      cursor: pointer;
+      padding: 10px 20px;
+      border-radius: 10px;
+      background-color: #DCD5DB;
+      color: #333;
+    }
+
+    .tab.active {
+      background-color: #268bd2;
+      color: #fff;
+    }
+
+    .container {
+      text-align: center;
+      height: 750px;
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    #timerTab .section-content,
+    #gratitudeTab .section-content {
+      border: 1px solid #333;
+      border-radius: 20px;
+      width: 300px;
+      margin: 20px auto;
+      padding: 20px;
+      text-align: center;
+      background: #333;
+    }
+
+    #timer {
+      color: #DCD5DB;
+      font-size: 30px;
+    }
+
+    #buttons button {
+      background: #DCD5DB;
+      border: none;
+      color: #000;
+      cursor: pointer;
+      padding: 5px;
+      width: 90px;
+      margin: 10px auto;
+      font-size: 14px;
+      height: 50px;
+      border-radius: 50px;
+    }
+
+    #buttons button#stop {
+      background: #DA6A79;
+    }
+
+    textarea {
+      min-width: 250px;
+      min-height: 150px;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <div class="tab" onclick="openTab('timerTab')">Pomodoro Timer</div>
+    <div class="tab" onclick="openTab('gratitudeTab')">Gratitude Journal</div>
+    <div class="tab" onclick="openTab('breathingTab')">Box Breathing</div>
+  </div>
+
+  <div class="container">
+    <div id="timerTab" class="section active">
+      <div id="timer" class="section-content">
+        <div id="time">
+          <span id="minutes">25</span>
+          <span id="colon">:</span>
+          <span id="seconds">00</span>
+        </div>
+        <div id="buttons">
+          <button id="work">Work</button>
+          <button id="shortBreak">Short Break</button>
+          <button id="longBreak">Long Break</button>
+          <button id="stop">Stop</button>
+        </div>
+        <div id="filler"></div>
+      </div>
+      <p style="color: #DCD5DB; position: absolute; top: 325px;">The pomodoro technique - why it works & how to do it. Todoist. (n.d.). https://todoist.com/productivity-methods/pomodoro-technique </p>
+    </div>
+
+    <div id="gratitudeTab" class="section">
+      <div id="gratitude" class="section-content">
+        <p style="color: #DCD5DB;">Practicing
+        gratitude invites
+        joy into our lives (Brown,2012).</p>
+        <textarea placeholder="Write about three things you're grateful for today"></textarea>
+      </div>
+    </div>
+
+    <div id="breathingTab" class="section">
+      <div id="breathing" class="section-content">
+        <!doctype html>
+        <html lang="">
+            <head>
+                <meta charset="utf-8">
+                <meta http-equiv="x-ua-compatible" content="ie=edge">
+                <title>Breath Pacer</title>
+                <meta name="description" content="">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">
+                <style>
+                    body, html {
+                        padding: 0;
+                        font-family: 'Fira Mono', monospace;
+                        color:#657b83;
+                    }
+
+                    body {
+                        background: #fdf6e3;
+                    }
+                    .center{
+                        position: absolute;
+                        margin-left: -200px;
+                        margin-top:  -200px;
+                        top:        35%;
+                        left:       50%;
+                    }
+                    #CurrentBreathCircle{
+                        position: absolute;
+                        margin-left: -5px;
+                        margin-top:  -5px;
+                        top:        35%;
+                        left:       50%;
+                    }
+                    #info{
+                        text-align: center;
+                    }
+                    a{
+                        color: #DCD5DB;
+                    }
+                    a:active{
+                        color: #DCD5DB;
+                    }
+                    a:hover{
+                        color:#DCD5DB;
+                    }
+
+                </style>
+            </head>
+            <body>
+  <div>
+    <svg width="10" height="10" id="CurrentBreathCircle">
+        <circle cx="5" cy="5" r="2" fill="#4B99AD" ></circle>
+    </svg>
+    <svg width="400" height="400" class="center" id="MinBreathCircle">
+        <circle cx="200" cy="200" r="2" fill="#DCD5DB" ></circle>
+    </svg>
+    <svg width="400" height="400" class="center" id="MaxBreathCircle">
+        <circle cx="200" cy="200" r="100" stroke="#DCD5DB" stroke-width="2"fill="none"></circle>
+    </svg>
+  </div>
+                
+              <p style="color: #DCD5DB; position: absolute; top: 325px;">Breathing exercise has a reducing effect on stress hormones (Örün et al., 2021).</p>
+                <script src="//cdn.jsdelivr.net/zepto/1.1.6/zepto.min.js"></script>
+                <script src="//cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+                <script>
+                    $("#CurrentBreathCircle").velocity({ scale:"5000%" }, {
+                        /* Velocity's default options */
+                        duration: 5000,
+                        easing: "swing",
+                        loop: true,
+                        delay: 1000,
+                        mobileHA: true
+                    });
+                </script>
+            </body>
+        </html>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/zepto/1.1.6/zepto.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/velocity/1.2.3/velocity.min.js"></script>
+  <script>
+    function openTab(tabName) {
+      var i, tabContent, tabLinks;
+      tabContent = document.getElementsByClassName("section");
+      for (i = 0; i < tabContent.length; i++) {
+        tabContent[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+    }
+
+    var pomodoro = {
+        started : false,
+        minutes : 0,
+        seconds : 0,
+        fillerHeight : 0,
+        fillerIncrement : 0,
+        interval : null,
+        minutesDom : null,
+        secondsDom : null,
+        fillerDom : null,
+        init : function(){
+          var self = this;
+          this.minutesDom = document.querySelector('#minutes');
+          this.secondsDom = document.querySelector('#seconds');
+          this.fillerDom = document.querySelector('#filler');
+          this.interval = setInterval(function(){
+            self.intervalCallback.apply(self);
+          }, 1000);
+          document.querySelector('#work').onclick = function(){
+            self.startWork.apply(self);
+          };
+          document.querySelector('#shortBreak').onclick = function(){
+            self.startShortBreak.apply(self);
+          };
+          document.querySelector('#longBreak').onclick = function(){
+            self.startLongBreak.apply(self);
+          };
+          document.querySelector('#stop').onclick = function(){
+            self.stopTimer.apply(self);
+          };
+        },
+        resetVariables : function(mins, secs, started){
+          this.minutes = mins;
+          this.seconds = secs;
+          this.started = started;
+          this.fillerIncrement = 200/(this.minutes*60);
+          this.fillerHeight = 0;  
+        },
+        startWork: function() {
+          this.resetVariables(25, 0, true);
+        },
+        startShortBreak : function(){
+          this.resetVariables(5, 0, true);
+        },
+        startLongBreak : function(){
+          this.resetVariables(15, 0, true);
+        },
+        stopTimer : function(){
+          this.resetVariables(25, 0, false);
+          this.updateDom();
+        },
+        toDoubleDigit : function(num){
+          if(num < 10) {
+            return "0" + parseInt(num, 10);
+          }
+          return num;
+        },
+        updateDom : function(){
+          this.minutesDom.innerHTML = this.toDoubleDigit(this.minutes);
+          this.secondsDom.innerHTML = this.toDoubleDigit(this.seconds);
+          this.fillerHeight = this.fillerHeight + this.fillerIncrement;
+          this.fillerDom.style.height = this.fillerHeight + 'px';
+        },
+        intervalCallback : function(){
+          if(!this.started) return false;
+          if(this.seconds == 0) {
+            if(this.minutes == 0) {
+              this.timerComplete();
+              return;
+            }
+            this.seconds = 59;
+            this.minutes--;
+          } else {
+            this.seconds--;
+          }
+          this.updateDom();
+        },
+        timerComplete : function(){
+          this.started = false;
+          this.fillerHeight = 0;
+        }
+    };
+    window.onload = function(){
+      pomodoro.init();
+    };
+                  // Breathing animation
+                  $("#CurrentBreathCircle").velocity({ scale: "5000%" }, {
+                    duration: 5000,
+                    easing: "swing",
+                    loop: true,
+                    delay: 1000,
+                    mobileHA: true
+                  });
+                </script>
+              </body>
+              </html>
